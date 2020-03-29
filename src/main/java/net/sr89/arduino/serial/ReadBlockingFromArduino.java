@@ -30,12 +30,12 @@ public class ReadBlockingFromArduino {
     }
 
     private static void printData(SerialData serialData) {
-        String byteString = byteArrayString(serialData.getData(), serialData.getLastIndexExclusive());
+        String byteString = byteArrayString(serialData.getData(), serialData.getSize());
         System.out.println(toDecimalSeconds(elapsed()) + ": " + byteString + " = " + toUTF8(serialData));
     }
 
     private static String toUTF8(SerialData serialData) {
-        return new String(serialData.getData(), 0, serialData.getLastIndexExclusive(), UTF_8);
+        return new String(serialData.getData(), 0, serialData.getSize(), UTF_8);
     }
 
     public static String byteArrayString(byte[] a, int toIndexExclusive) {

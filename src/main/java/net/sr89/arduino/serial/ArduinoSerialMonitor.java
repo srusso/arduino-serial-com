@@ -12,7 +12,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
 
-public class ReadAsciiFromArduino {
+public class ArduinoSerialMonitor {
     private static final Instant beginning = Instant.now();
 
     @SuppressWarnings("InfiniteLoopStatement")
@@ -21,7 +21,9 @@ public class ReadAsciiFromArduino {
 
         try (SerialAsciiLineReader reader = new SerialAsciiLineReader(new SemiBlockingReader(port, Duration.ofMillis(1000)));) {
             while (true) {
-                System.out.println(toDecimalSeconds(elapsed()) + ": " + reader.readNextLine());
+                reader.readNextLine().ifPresent(
+                        line -> System.out.print(toDecimalSeconds(elapsed()) + ": " + line)
+                );
             }
         }
     }
@@ -46,13 +48,5 @@ public class ReadAsciiFromArduino {
 
     private static Duration elapsed() {
         return Duration.between(beginning, Instant.now());
-    }
-
-    private static void waitABit() {
-        try {
-            Thread.sleep(200L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

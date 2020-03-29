@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
 
-public class ReadFromArduino {
+public class ReadNonBlockingFromArduino {
     private static final Instant beginning = Instant.now();
 
     @SuppressWarnings("InfiniteLoopStatement")
@@ -21,8 +21,8 @@ public class ReadFromArduino {
             while (true) {
                 reader.tryRead()
                         .ifPresentOrElse(
-                                ReadFromArduino::printData,
-                                ReadFromArduino::waitABit
+                                ReadNonBlockingFromArduino::printData,
+                                ReadNonBlockingFromArduino::waitABit
                         );
             }
         }
