@@ -1,16 +1,13 @@
 package net.sr89.arduino.serial;
 
 import com.fazecast.jSerialComm.SerialPort;
-import net.sr89.arduino.serial.data.SerialData;
 import net.sr89.arduino.serial.exception.SerialReadError;
 import net.sr89.arduino.serial.read.buffered.SerialAsciiLineReader;
-import net.sr89.arduino.serial.read.direct.NonBlockingReader;
 import net.sr89.arduino.serial.read.direct.SemiBlockingReader;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Arrays;
 
 public class ArduinoSerialMonitor {
     private static final Instant beginning = Instant.now();
@@ -21,8 +18,9 @@ public class ArduinoSerialMonitor {
 
         try (SerialAsciiLineReader reader = new SerialAsciiLineReader(new SemiBlockingReader(port, Duration.ofMillis(1000)));) {
             while (true) {
-                reader.readNextLine().ifPresent(
-                        line -> System.out.print(toDecimalSeconds(elapsed()) + ": " + line)
+                reader.readNextLine().ifPresentOrElse(
+                        line -> System.out.print(toDecimalSeconds(elapsed()) + ": " + line),
+                        ArduinoSerialMonitor::waitABit
                 );
             }
         }
@@ -48,5 +46,13 @@ public class ArduinoSerialMonitor {
 
     private static Duration elapsed() {
         return Duration.between(beginning, Instant.now());
+    }
+
+    private static void waitABit() {
+        try {
+            Thread.sleep(20L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
