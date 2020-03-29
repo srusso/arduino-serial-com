@@ -20,23 +20,6 @@ class SerialAsciiLineReaderTest {
 
     SerialAsciiLineReader reader;
 
-    // TODO remove this crap
-    public static void main(String[] args) throws SerialReadError {
-        SerialAsciiLineReaderTest test = new SerialAsciiLineReaderTest();
-
-        test.setUp();
-        test.readLessThanOneLine();
-
-        test.setUp();
-        test.readNothing();
-
-        test.setUp();
-        test.readFullLine();
-
-        test.setUp();
-        test.readMultipleLines();
-    }
-
     @BeforeEach
     void setUp() {
         semiBlockingReader = mock(SemiBlockingReader.class);
