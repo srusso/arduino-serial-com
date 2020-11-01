@@ -8,13 +8,23 @@
     <artifactId>arduino-serial-com</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <name>Arduino Serial COM</name>
+    <description>Library to read serial messages written by Arduino to the COM interface.</description>
+    <url>https://github.com/srusso/arduino-serial-com</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
     <dependencies>
         <dependency>
             <groupId>com.fazecast</groupId>
             <artifactId>jSerialComm</artifactId>
             <version>2.6.0</version>
         </dependency>
-
 
         <!--TEST-->
         <dependency>
