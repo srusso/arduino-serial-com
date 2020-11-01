@@ -7,11 +7,16 @@
     <groupId>net.sr89</groupId>
     <artifactId>arduino-serial-com</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
 
     <name>Arduino Serial COM</name>
     <description>Library to read serial messages written by Arduino to the COM interface.</description>
     <url>https://github.com/srusso/arduino-serial-com</url>
+
+    <properties>
+        <project.java.version>13</project.java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
     <licenses>
         <license>
@@ -55,8 +60,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>1.13</source>
-                    <target>1.13</target>
+                    <source>${project.java.version}</source>
+                    <target>${project.java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
