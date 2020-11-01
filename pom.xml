@@ -6,7 +6,7 @@
 
     <groupId>net.sr89</groupId>
     <artifactId>arduino-serial-com</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
 
     <name>Arduino Serial COM</name>
     <description>Library to read serial messages written by Arduino to the COM interface.</description>
