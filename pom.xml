@@ -7,6 +7,7 @@
     <groupId>net.sr89</groupId>
     <artifactId>arduino-serial-com</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>Arduino Serial COM</name>
     <description>Library to read serial messages written by Arduino to the COM interface.</description>
@@ -18,6 +19,12 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/srusso/arduino-serial-com.git</connection>
+        <developerConnection>scm:git:ssh://github.com:srusso/arduino-serial-com.git</developerConnection>
+        <url>http://github.com/srusso/arduino-serial-com/tree/master</url>
+    </scm>
 
     <dependencies>
         <dependency>
